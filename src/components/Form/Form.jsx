@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import s from './Form.module.css';
 
@@ -8,6 +9,9 @@ class Form extends React.Component {
     name: '',
     number: '',
   };
+
+  nameInputId = uuidv4();
+  numberInputId = uuidv4();
 
   handleChange = event => {
     const { name, value } = event.currentTarget;
@@ -19,7 +23,7 @@ class Form extends React.Component {
 
     // Проп который передается форме для вызова при сабмите
     this.state.contacts.push({
-      id: 123,
+      id: uuidv4(),
       name: this.state.name,
       number: this.state.number,
     });
@@ -39,11 +43,12 @@ class Form extends React.Component {
       <div className={s.container}>
         <h2>Phonebook</h2>
         <form onSubmit={this.handleSubmit}>
-          <label>
+          <label htmlFor={this.nameInputId}>
             Name
             <input
               type="text"
               name="name"
+              id={this.nameInputId}
               value={name}
               onChange={this.handleChange}
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -51,12 +56,13 @@ class Form extends React.Component {
               required
             />
           </label>
-          <label>
+          <label htmlFor={this.numberInputId}>
             Number
             <input
               type="tel"
               name="number"
               value={number}
+              id={this.numberInputId}
               onChange={this.handleChange}
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
