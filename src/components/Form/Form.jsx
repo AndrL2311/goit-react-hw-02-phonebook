@@ -5,7 +5,6 @@ import s from './Form.module.css';
 
 class Form extends React.Component {
   state = {
-    contacts: [],
     name: '',
     number: '',
   };
@@ -22,12 +21,12 @@ class Form extends React.Component {
     event.preventDefault();
 
     // Проп который передается форме для вызова при сабмите
-    this.state.contacts.push({
-      id: uuidv4(),
-      name: this.state.name,
-      number: this.state.number,
-    });
-    this.props.onSubmit(this.state.contacts);
+    // this.state.contacts.push({
+    //   id: uuidv4(),
+    //   name: this.state.name,
+    //   number: this.state.number,
+    // });
+    this.props.onSubmit(this.state);
     // Сбрасываем имя и номер
     this.reset();
   };
