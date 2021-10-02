@@ -8,8 +8,16 @@ class App extends React.Component {
     name: '',
   };
 
-  handleChange = e => {
-    this.setState({ login: e.target.name });
+  handleChange = event => {
+    this.setState({ name: event.target.value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log(`Signed up as: ${this.state.name}`);
+
+    // Проп который передается форме для вызова при сабмите
+    // this.props.onSubmit(this.state.name);
   };
 
   render() {
@@ -23,7 +31,8 @@ class App extends React.Component {
             Name
             <input
               type="text"
-              name={name}
+              name="name"
+              value={name}
               onChange={this.handleChange}
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
