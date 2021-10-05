@@ -1,36 +1,19 @@
 import s from './Contacts.module.css';
+import Contact from '../Contact/Contact';
 
 function Contacts({ contacts, onDeleteContact }) {
   return (
-    <>
-      <ul className={s.statistics}>
-        {contacts.map(contact => (
-          <li className="item" key={contact.id}>
-            <span className={s.label}>{contact.name}</span>
-            <span className={s.value}>{contact.number}</span>
-            <button
-              className={s.button}
-              type="button"
-              onClick={() => onDeleteContact(contact.id)}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul className={s.statistics}>
+      {contacts.map(contact => (
+        <Contact
+          id={contact.id}
+          name={contact.name}
+          number={contact.number}
+          onDeleteContact={onDeleteContact}
+        />
+      ))}
+    </ul>
   );
 }
 
 export default Contacts;
-
-//   contacts.length > 0 && contacts.map(contact => console.log(contact.id));}
-// (<li className="item">
-//         <span className={s.label}>Name</span>
-//             <span className={s.value}>Number</span>
-//             <button
-//           className={s.button}
-//           type="button"
-//         //   onClick={onLeaveFeedback}
-//         >Delete</button>
-//         </li>
