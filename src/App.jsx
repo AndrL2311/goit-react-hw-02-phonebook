@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import s from './App.module.css';
 import Form from './components/Form/Form';
+import Filter from './components/Filter/Filter';
 import Contacts from './components/Contacts/Contacts';
 
 class App extends React.Component {
@@ -24,11 +25,22 @@ class App extends React.Component {
     });
   };
 
+  changeFilter = event => {
+    this.setState({ filter: event.currentTarget.value });
+  };
+
   render() {
+    const normalizedFilter = this.state.filter.toLowerCase();
+    const visibleContacts = this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter),
+    );
+
     return (
       <div className={s.container}>
         <Form onSubmit={this.formSubmitHandler} />
-        <Contacts contacts={this.state.contacts} />
+        <Filter value={this.state.filter} onChange={this.changeFilter} />
+        {/* <Contacts contacts={this.state.contacts} /> */}
+        <Contacts contacts={visibleContacts} />
       </div>
     );
   }
