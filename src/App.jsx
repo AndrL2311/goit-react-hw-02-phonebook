@@ -53,9 +53,9 @@ class App extends React.Component {
 
     return (
       <div className={s.container}>
-        <h1>Phonebook</h1>
+        <h1 className={s.titlePhonebook}>Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} />
-        <h2>Contacts</h2>
+        <h2 className={s.titleContacts}>Contacts</h2>
         <Filter value={this.state.filter} onChange={this.changeFilter} />
         <Contacts
           contacts={visibleContacts}

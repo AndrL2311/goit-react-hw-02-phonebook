@@ -3,9 +3,10 @@ import Contact from '../Contact/Contact';
 
 function Contacts({ contacts, onDeleteContact }) {
   return (
-    <ul className={s.statistics}>
+    <ul className={s.list}>
       {contacts.map(contact => (
         <Contact
+          key={contact.id}
           id={contact.id}
           name={contact.name}
           number={contact.number}
