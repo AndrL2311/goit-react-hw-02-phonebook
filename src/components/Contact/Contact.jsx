@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './Contact.module.css';
 
 function Contact({ id, name, number, onDeleteContact }) {
@@ -17,3 +18,10 @@ function Contact({ id, name, number, onDeleteContact }) {
 }
 
 export default Contact;
+
+Contact.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
+};

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './Filter.module.css';
 
 function Filter({ value, onChange }) {
@@ -15,3 +16,8 @@ function Filter({ value, onChange }) {
 }
 
 export default Filter;
+
+Filter.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};
