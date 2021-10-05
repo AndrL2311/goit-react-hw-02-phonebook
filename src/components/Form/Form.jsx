@@ -40,7 +40,6 @@ class Form extends React.Component {
 
     return (
       <div className={s.container}>
-        <h2>Phonebook</h2>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor={this.nameInputId}>
             Name

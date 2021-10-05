@@ -16,6 +16,7 @@ class App extends React.Component {
     ],
     filter: '',
   };
+
   formSubmitHandler = data => {
     data.id = uuidv4();
     this.setState(prevState => {
@@ -29,17 +30,23 @@ class App extends React.Component {
     this.setState({ filter: event.currentTarget.value });
   };
 
-  render() {
-    const normalizedFilter = this.state.filter.toLowerCase();
-    const visibleContacts = this.state.contacts.filter(contact =>
+  getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter),
     );
+  };
+
+  render() {
+    const visibleContacts = this.getVisibleContacts();
 
     return (
       <div className={s.container}>
+        <h1>Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} />
+        <h2>Contacts</h2>
         <Filter value={this.state.filter} onChange={this.changeFilter} />
-        {/* <Contacts contacts={this.state.contacts} /> */}
         <Contacts contacts={visibleContacts} />
       </div>
     );

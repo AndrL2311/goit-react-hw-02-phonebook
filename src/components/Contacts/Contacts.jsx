@@ -3,7 +3,6 @@ import s from './Contacts.module.css';
 function Contacts({ contacts }) {
   return (
     <>
-      <h2>Contacts</h2>
       <ul className={s.statistics}>
         {contacts.map(contact => (
           <li className="item" key={contact.id}>
