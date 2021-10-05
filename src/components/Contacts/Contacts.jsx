@@ -1,6 +1,6 @@
 import s from './Contacts.module.css';
 
-function Contacts({ contacts }) {
+function Contacts({ contacts, onDeleteContact }) {
   return (
     <>
       <ul className={s.statistics}>
@@ -11,7 +11,7 @@ function Contacts({ contacts }) {
             <button
               className={s.button}
               type="button"
-              //   onClick={onLeaveFeedback}
+              onClick={() => onDeleteContact(contact.id)}
             >
               Delete
             </button>
