@@ -18,12 +18,16 @@ class App extends React.Component {
   };
 
   formSubmitHandler = data => {
-    data.id = uuidv4();
-    this.setState(prevState => {
-      // console.log(prevState.contacts); // будет разный на каждой итерации
-      // Добавляем в масив новый объект
-      return { contacts: [...prevState.contacts, data] };
-    });
+    if (this.state.contacts.find(contact => contact.name === data.name)) {
+      return alert(`${data.name} is alredy in contacts`);
+    } else {
+      data.id = uuidv4();
+      this.setState(prevState => {
+        // console.log(prevState.contacts); // будет разный на каждой итерации
+        // Добавляем в масив новый объект
+        return { contacts: [...prevState.contacts, data] };
+      });
+    }
   };
 
   changeFilter = event => {
